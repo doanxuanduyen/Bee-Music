@@ -16,61 +16,61 @@ const app = {
             number: '01',
             name: 'Bach Tuong',
             singer: 'ToodLi',
-            path: '../music/BachTuong-ToddLi.mp3'
+            path: './music/BachTuong-ToddLi.mp3'
         },
         {
             number: '02',
             name: 'Ben Anh Dem Nay',
             singer: 'Binz',
-            path: '../music/BenAnhDemNay-BinzJCHung.mp3'
+            path: './music/BenAnhDemNay-BinzJCHung.mp3'
         },
         {
             number: '03',
             name: 'Ca nho',
             singer: 'ToodLi',
-            path: '../music/CaNho-ToddLi.mp3'
+            path: './music/CaNho-ToddLi.mp3'
         },
         {
             number: '04',
             name: 'Chang trai dang that tinh',
             singer: 'Binz',
-            path: '../music/ChangTraiDangThatTinh-DatGBinz.mp3'
+            path: './music/ChangTraiDangThatTinh-DatGBinz.mp3'
         },
         {
             number: '05',
             name: 'DeepSea',
             singer: 'Binz',
-            path: '../music/DeepSea-BinzThanhNguyen.mp3'
+            path: './music/DeepSea-BinzThanhNguyen.mp3'
         },
         {
             number: '06',
             name: 'Hai dam may',
             singer: 'Khoi',
-            path: '../music/HaiDamMay-Khoi.mp3'
+            path: './music/HaiDamMay-Khoi.mp3'
         },
         {
             number: '07',
             name: 'Nguoi trong long',
             singer: 'ToodLi',
-            path: '../music/NguoiTrongLong-ToddLi.mp3'
+            path: './music/NguoiTrongLong-ToddLi.mp3'
         },
         {
             number: '08',
             name: 'Sao cung duoc',
             singer: 'Binz',
-            path: '../music/SaoCungDuoc.mp3'
+            path: './music/SaoCungDuoc.mp3'
         },
         {
             number: '09',
             name: 'So Far',
             singer: 'Binz',
-            path: '../music/SoFar-Binz.mp3'
+            path: './music/SoFar-Binz.mp3'
         },
         {
             number: '10',
             name: 'Tieu Vu',
             singer: 'ToodLi',
-            path: '../music/TieuVuCover-ToddLi.mp3'
+            path: './music/TieuVuCover-ToddLi.mp3'
         }
     ],
 
@@ -128,19 +128,19 @@ const trending = {
     trends : [
         {
             number: '#1',
-            thumb: '../resource/img/thoikhaccodon.jpg',
+            thumb: './resource/img/thoikhaccodon.jpg',
             name: 'Thời Khắc Cô Đơn Nhất',
             artist: 'Tood Li'
         },
         {
             number: '#2',
-            thumb: '../resource/img/vungdatthatlac.jpg',
+            thumb: './resource/img/vungdatthatlac.jpg',
             name: 'Vùng Đất Thất Lạc',
             artist: 'Tood Li'
         },
         {
             number: '#3',
-            thumb: '../resource/img/nguoitronglong.jpg',
+            thumb: './resource/img/nguoitronglong.jpg',
             name: 'Người Trong Lòng',
             artist: 'Tood Li'
         }
