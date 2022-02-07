@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../resource/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />   
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <title>Bee Music</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <!-- navbar -->
+            <div class="navbar">
+                <div class="navbar__container">
+                    <div class="navbar__effect">
+                        <input type="checkbox" class="switch__mode">
+                        <span class="navbar__effect__icon">
+                            <i class="fad fa-grip-lines"></i>
+                        </span>
+                    </div>
+                    <div class="logo">
+                        <span class="logo__img"><i class="fab fa-forumbee"></i></span>
+                        <span class="logo__name">
+                            <span class="logo__name--yellow">Bee</span>
+                            <span class="logo__name--black">music</span>
+                        </span>
+                    </div>
+                    <div class="navbar_content">
+                        <div class="navbar_content navbar_content_main">
+                            <ul class="navbar">
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-home"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            home
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fal fa-analytics"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            trend
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-compass"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            feed
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar_content navbar_content_discover">
+                            <p class="navbar__content_tittle">Discover</p>
+                            <ul class="navbar">
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="far fa-newspaper"></i>                                        </span>
+                                        <span class="navbar__content">
+                                            new and notable
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            realese calendar
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-ticket-alt"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            events
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navbar_content navbar_content_collection">
+                            <p class="navbar__content_tittle">Your Collection</p>
+                            <ul class="navbar">
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-heart"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            favorite song
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-users"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            artist
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="navbar__icon__content">
+                                    <a href="#">
+                                        <span class="navbar__icon">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="navbar__content">
+                                            albums
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr style="color: rgb(97, 95, 95);">
+                <div class="navbar__user">
+                    <span class="account__img">
+                        <img src="https://i.pinimg.com/564x/e2/06/dd/e206ddf0f27e3b1084a18b9f6635a514.jpg" alt="">
+                    </span>
+                    <span class="account__name">Alex.D</span>
+                    <span class="account__icon"><i class="fad fa-sign-out"></i></span>
+                </div>
+            </div>
+
+            <!-- main -->
+            <div class="content">
+                <div class="content content__header">
+                    <div class="icon__before__after">
+                        <span class="icon icon__before">
+                            <i class="fas fa-long-arrow-alt-left"></i>
+                        </span>
+                        <span class="icon icon__after">
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </span>
+                    </div>
+                    <div class="search__bar">
+                        <span class="icon__search">
+                            <i class="far fa-search"></i>
+                        </span>
+                        <span class="input">
+                            <input type="text" placeholder="Search for artist, song" id="search">
+                        </span>
+                        <span class="clear" onclick="document.getElementById('search').value=''">
+                            <i class="fal fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="content content__tittle">
+                    <p class="content__tittle__small">
+                        what's hot
+                        <img src="../resource/img/fire.png">
+                    </p>
+                    <div class="content__tittle__big">
+                        <p class="content__tittle__big__left">trending</p>
+                        <p class="content__tittle__big__right">more <i class="far fa-chevron-right"></i></p>
+                    </div>
+                </div>
+                <div class="content content__banner">
+                    <p class="content__banner__small__tittle">
+                        artist
+                    </p>
+                    <h4 class="content__banner__big__tittle">
+                        on top the world
+                    </h4>
+                    <div class="content__banner__sub">
+                        <div class="content__banner__sub__button">
+                            <button class="button__play">play</button>
+                            <button class="button__follow">follow</button>
+                        </div>
+                        <div class="content__banner__sub__infor">
+                            <p>Monthly listeners</p>
+                            <h5>50.000</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="content content__playList">
+                    <div class="playList__header">
+                        <h1>my playlist</h1>
+                        <p>Show all</p>
+                    </div>
+                    <div class="playList__main">
+                        <div class="playList playList__tittle">
+                            <p class="playList__number">#</p>
+                            <p class="playList__name">tittle</p>
+                            <p class="playList__artist">artist</p>
+                            <p class="playList__time">time</p>
+                        </div>
+                        <div class="playList__play">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="playSong">
+                    <div class="playSong__control">
+                        <div class="playSong__control__active">
+                            <i class="far fa-heart heart"></i>
+                            <i class="fas fa-music"></i>
+                            <i class="far fa-expand-alt"></i>
+                        </div>
+                        <div class="playSong__control__main">
+                            <i class="far fa-undo-alt play-repeat"></i>
+                            <i class="fas fa-fast-backward play-backward"></i>
+                            <i class="fas fa-play-circle play"></i>
+                            <i class="fas fa-fast-forward play-forward"></i>
+                            <i class="fas fa-random play-random"></i>
+                        </div>
+                        <div class="playSong__volumn">
+                            <i class="fal fa-volume-up"></i>
+                            <div class="slider">
+                                <input type="range" min="0" max="100" value="50" class="volumn__input">
+                                <progress min="0" max="100" value="50" class="volumn__progress"></progress>
+                            </div>
+                            <div class="sliderValue">50</div>
+                        </div>
+                    </div>
+                    <div class="playSong__process">
+                        <span class="current-time">00:00</span>
+                        <div class="progress__song"><div class="progress-bar__song"></div></div>
+                        <span class="duration-time">03:22</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- siderbar -->
+            <div class="siderbar">
+                <div class="siderbar__shortcut">
+                    <p class="siderbar__title">
+                        shortcuts
+                    </p>
+                    <div class="siderbar__shortcut__items">
+                        <span class="siderbar__shortcut__item">
+                            chill
+                            <i class="far fa-snowflake snow"></i>
+                        </span>
+                        <span class="siderbar__shortcut__item">
+                            hot
+                            <i class="fas fa-star star"></i>
+                        </span>
+                        <span class="siderbar__shortcut__item">
+                            Piano instrumental
+                            <i class="fad fa-piano-keyboard keyboard"></i>
+                        </span>
+                        <span class="siderbar__shortcut__item">
+                            jazz
+                            <i class="fas fa-saxophone saxophone"></i>
+                        </span>
+                        <span class="siderbar__shortcut__item">
+                            acoustic
+                            <i class="fas fa-guitar guitar"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="siderbar__trending">
+                    <p class="siderbar__title">trending</p>
+                    <div class="listTrend">
+                        <div class="listTrend__item"></div>
+                    </div>
+                </div>
+
+                <div class="siderbar__chart">
+                    <div id="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        window.onload = function() {
+        volumnButton = document.querySelector(".volumn__input");
+        volumnButton.oninput = function(){
+            volumnProgress = document.querySelector(".volumn__progress");
+            volumnProgress.value = volumnButton.value;
+
+            volumnValue = document.querySelector(".sliderValue");
+            volumnValue.innerHTML = volumnButton.value;
+        }
+    }
+    </script>
+    <script src="../resource/js/script.js"></script>
+    <script src="../resource/js/chart.js"></script>
+</body>
+</html>
