@@ -10,6 +10,7 @@ body{
     box-sizing: border-box;
 }
 :root{
+    --color-icon-close:#ced2fa;
     --color-border:white;
     --color-chart:#E7E8F3;
     --color-hr: ;
@@ -54,11 +55,11 @@ body{
     /* Grid */
     display: grid;
     grid-template-columns: 275px 570px 255px;
-
 }
 
 /* navbar */
-.navbar{
+.wrapper__navbar{
+    position: relative;
     background-color: var(--color-background-navbar);  
     border-radius: 20px 0 0 20px;
 }
@@ -81,7 +82,7 @@ body{
     margin: 0;
 }
 .switch__mode:checked{
-    background-color: var(--color-background-main);
+    background-color: #999ed4;
 }
 .switch__mode::before{
     content: "";
@@ -100,10 +101,19 @@ body{
     background-color: var(--color-button-before);
 }
 .navbar__effect__icon{
-    color: var(--text-color);
-    margin-left: auto;
-    font-size: 15px;
+    position: absolute;
+    color: var(--color-black);
+    font-size: 14px;
     cursor: pointer;
+    top:2.8rem;
+    right: -1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-icon-close);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .logo{
@@ -136,6 +146,8 @@ a{
     padding: 1rem;
     font-size: 1.4rem;
     transition: .1s;
+
+    width: 19.6rem;
 }
 .navbar__icon__content:hover{
     background-color: var(--color-navbar-hover);
@@ -466,9 +478,9 @@ hr{
 }
 .slider input[type ="range"]{
     position: absolute;
-    top: -1px;
-    width: 6rem;
-    height: .2px;
+    top: -2px;
+    width: 6.2rem;
+    height: .2rem;
     -webkit-appearance: none;
     background: transparent;
     z-index: 99;
@@ -487,6 +499,7 @@ hr{
 .slider progress{
     position: absolute;
     top: 0;
+    left: 2px;
     width: 6rem;
     height: .2rem;
     -webkit-appearance: none;
@@ -504,6 +517,7 @@ hr{
     margin-left: 1rem;
     font-size: .9rem;
     margin-bottom: .2rem;
+    width: 12px;
 }
 
 .playSong__process {
@@ -640,10 +654,13 @@ i.saxophone,
 } */
 
 /* mode */
-.navbar.dark{
+.wrapper__navbar.dark{
     --color-background-navbar: #242526;
     --text-color:rgb(236, 234, 234);
     --color-gray: rgb(175, 175, 175);
+}
+.wrapper__navbar.dark .navbar__effect__icon{
+    --color-icon-close:#999ed4;
 }
 .content.dark{
     --color-background-main:#18191a;
@@ -651,6 +668,10 @@ i.saxophone,
 }
 .content.dark .search__bar .input input{
     background-color: var(--color-background-navbar);
+    color: white;
+}
+.content.dark .content__tittle__big__right:hover{
+    color: white;
 }
 .content.dark .slider progress::-webkit-progress-value,
 .content.dark .slider input::-webkit-slider-thumb{
@@ -665,7 +686,7 @@ i.saxophone,
     --color-border:rgba(255, 255, 255, 0.555);
 }
 .siderbar.dark .media{
-    background-color: rgba(255, 255, 255, 0.014);
+    background-color: rgba(255, 255, 255, 0.116);
 }
 .siderbar.dark .media:hover{
     background:rgba(255, 255, 255, 0.301);
@@ -674,4 +695,60 @@ i.saxophone,
     color: rgb(227, 227, 233);
 }
 
-/* heart */
+.container.close{
+    grid-template-columns: 88px 570px 255px;
+}
+.wrapper__navbar{
+    height: 100%;
+    width: 275px;
+}
+.container.close .wrapper__navbar{
+    width: 88px;
+}
+.container.close .navbar__content_tittle {
+    display: none;
+}
+.container.close .navbar__content__text{
+    opacity: 0;
+}
+.container.close .logo{
+    width: 20rem;
+}
+.container.close .logo__name{
+    opacity: 0;
+}
+.container.close .navbar__user{
+    position: relative;
+    padding: 0 2.5rem;
+}
+.container.close .account__name{
+    opacity: 0;
+}
+.container.close .account__icon{
+    /* opacity: 1; */
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: -4rem;
+    right: 3.3rem;
+}
+.container.close hr{
+    display: none;
+}
+.container.close .account__img img{
+    margin-top: 4rem;
+}
+.container.close .navbar__icon__content{
+    width: 5rem;
+    height: 2rem;
+    transition: 0;
+}
+.container.close .navbar__icon__content:hover{
+    border-radius: .7rem 0 0 .7rem;
+}
+.container.close .navbar__icon__content::after{
+    display: none;
+}
+.container.close .navbar__container{
+    padding: 2rem;
+    padding-top: 3rem;
+}

@@ -122,7 +122,6 @@ const app = {
 
 app.start();
 
-
 //trending
 const trending = {
     trends : [
@@ -170,7 +169,7 @@ const trending = {
 trending.begin();
 
 //mode
-const   navbar      = document.querySelector('.navbar'),
+const   navbar      = document.querySelector('.wrapper__navbar'),
         content     = document.querySelector('.content'),
         siderbar    = document.querySelector('.siderbar'),
         switch__mode= document.querySelector('.switch__mode'),
@@ -188,10 +187,27 @@ const   navbar      = document.querySelector('.navbar'),
         switch__mode.addEventListener('click', () =>{
             wrapper.classList.toggle("dark");
         })
+//close navbar
+const resNavbar = document.querySelector('.navbar__effect__icon'),
+    container = document.querySelector('.container')
+
+resNavbar.addEventListener('click', () =>{
+    container.classList.toggle("close");
+})
+resNavbar.addEventListener('click', () =>{
+    navbar.classList.toggle("close");
+})
+        
 
 //heart
-const   heartBefore = document.getElementById('.heart--before'),
-        heartAfter = document.getElementById('.heart--after')
-
-
-
+const   heartBtn = document.getElementById('heart')
+        heartBtn.addEventListener('click', function() {
+            if (heartBtn.className == 'far fa-heart') {
+                heartBtn.className = 'fas fa-heart';
+                heartBtn.style.color = 'red';
+            } else {
+                heartBtn.className = 'far fa-heart';
+                heartBtn.style.color = '#676669';
+            }
+        })
+        
