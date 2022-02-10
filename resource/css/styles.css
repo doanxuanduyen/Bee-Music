@@ -28,7 +28,8 @@ body{
     --color-scrollbar-thumb: rgba(145, 145, 145, 0.719);
 }
 .wrapper{
-    height: 900px;
+    position: relative;
+    height: 710px;
     background-color: var(--color-background);
     display: flex;
     justify-content: center;
@@ -48,7 +49,7 @@ body{
 }
 .container{
     position: relative;
-    margin-top: 6%;
+    margin-top: 1%;
     border-radius: 20px;
     height: 65rem;
     box-shadow: 0 0 0.8rem black;
@@ -177,6 +178,29 @@ a{
 .navbar__content_tittle{
     font-size: 1.2rem;
     margin: 0.9rem;
+}
+.navbar__icon__content .navbar__content--title{
+    position: absolute;
+    top: -1.5rem;
+    left: 3rem;
+    padding: .5rem 2rem;
+    border-radius: 1rem;
+    background: var(--color-navbar-hover);
+    color: var(--color-black);
+    z-index: 1;
+    transition: opacity 0.2s;
+    width: max-content;
+    visibility: hidden;
+}
+.navbar__icon__content .navbar__content--title::after{
+    content: "";
+    position: absolute;
+    top: 89%;
+    left: 20%;
+    transform: translate(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: var(--color-navbar-hover) transparent transparent transparent ;
 }
 hr{
     color: var(--color-gray);
@@ -597,7 +621,7 @@ i.saxophone,
     cursor:pointer;
     display: flex;
     align-items: center;
-    width: 23.5rem;
+    width: inherit;
     height: 6rem;
     margin-bottom: 1rem;
     padding: .5rem 1rem;
@@ -695,60 +719,200 @@ i.saxophone,
     color: rgb(227, 227, 233);
 }
 
-.container.close{
-    grid-template-columns: 88px 570px 255px;
+            /* Responsive */
+@media screen and (min-width:1117px){
+    .container.close{
+        grid-template-columns: 88px 671.5px 348.5px;
+    }
+    .wrapper__navbar{
+        height: 100%;
+        width: 275px;
+    }
+    .container.close .wrapper__navbar{
+        width: 88px;
+    }
+    .container.close .navbar__content_tittle {
+        display: none;
+    }
+    .container.close .navbar__content__text{
+        opacity: 0;
+    }
+    .container.close .logo{
+        width: 20rem;
+    }
+    .container.close .logo__name{
+        opacity: 0;
+    }
+    .container.close .navbar__user{
+        position: relative;
+        padding: 0 2.5rem;
+    }
+    .container.close .account__name{
+        opacity: 0;
+    }
+    .container.close .account__icon{
+        /* opacity: 1; */
+        position: absolute;
+        font-size: 1.5rem;
+        bottom: -4rem;
+        right: 3.3rem;
+    }
+    .container.close hr{
+        display: none;
+    }
+    .container.close .account__img img{
+        margin-top: 4rem;
+    }
+    .container.close .navbar__icon__content{
+        width: 5rem;
+        height: 2rem;
+        transition: 0;
+    }
+    .container.close .navbar__icon__content:hover{
+        border-radius: .7rem 0 0 .7rem;
+        background: #E7E8F3;
+    }
+    .container.close .navbar__icon__content::after{
+        display: none;
+    }
+    .container.close .navbar__container{
+        padding: 2rem;
+        padding-top: 3rem;
+    }
+    .container.close .navbar__icon__content:hover .navbar__content--title{
+        visibility: visible;
+        opacity: 1;
+    }
+    .container.close .playList{
+        gap: 4rem;
+    }
+    .container.close .playSong{
+        width: 61rem;
+    }
 }
-.wrapper__navbar{
-    height: 100%;
-    width: 275px;
+
+@media screen and (max-width: 1117px) {
+    .container{
+        grid-template-columns: 88px 570px 255px;
+    }
+    .container .wrapper__navbar{
+        width: 88px;
+        transition: 0.5s;
+    }
+    .container .navbar__content_tittle {
+        display: none;
+    }
+    .container .navbar__content__text{
+        opacity: 0;
+    }
+    .container .logo{
+        width: 20rem;
+    }
+    .container .logo__name{
+        opacity: 0;
+    }
+    .container .navbar__user{
+        position: relative;
+        padding: 0 2.5rem;
+    }
+    .container .account__img img{
+        margin-top: 4rem;
+    }
+    .container .account__name{
+        opacity: 0;
+    }
+    .container .account__icon{
+        position: absolute;
+        font-size: 1.5rem;
+        bottom: -4rem;
+        right: 3.3rem;
+    }
+    .container hr{
+        display: none;
+    }
+    .container .navbar__icon__content{
+        width: 5rem;
+        height: 2rem;
+        transition: 0;
+    }
+    .container .navbar__icon__content:hover{
+        border-radius: .7rem 0 0 .7rem;
+    }
+    .container .navbar__icon__content::after{
+        display: none;
+    }
+    .container .navbar__container{
+        padding: 2rem;
+        padding-top: 3rem;
+    }
+
+    /* open navbar */
+    .container.open .wrapper__navbar{
+        width: 275px;
+        z-index: 99;
+        box-shadow: 0 0 0.8rem black;
+    }
+    .container.open .navbar__content_tittle {
+        display: block;
+        margin: 0.9rem;
+    }
+    .container.open .navbar__content__text{
+        opacity: 1;
+    }
+    .container.open .logo{
+        width: initial;
+    }
+    .container.open .logo__name{
+        opacity: 1;
+    }
+    .container.open .navbar__user{
+        position: relative;
+        padding: 0 2.5rem;
+    }
+    .container.open .account__img img{
+        margin-top: 1rem;
+    }
+    .container.open .account__name{
+        opacity: 1;
+    }
+    .container.open .account__icon{
+        position: absolute;
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        right: 3.3rem;
+    }
+    .container.open hr{
+        display: block;
+    }
+    .container.open .navbar__icon__content{
+        width: 20.6rem;
+        height: 2rem;
+        transition: 0;
+    }
+    .container.open .navbar__icon__content:hover{
+        border-radius: .7rem;
+    }
+    .container.open .navbar__icon__content::after{
+        display: initial;
+    }
+    .container.open .navbar__container{
+        padding: 2rem;
+        padding-top: 3rem;
+    }
 }
-.container.close .wrapper__navbar{
-    width: 88px;
-}
-.container.close .navbar__content_tittle {
-    display: none;
-}
-.container.close .navbar__content__text{
-    opacity: 0;
-}
-.container.close .logo{
-    width: 20rem;
-}
-.container.close .logo__name{
-    opacity: 0;
-}
-.container.close .navbar__user{
-    position: relative;
-    padding: 0 2.5rem;
-}
-.container.close .account__name{
-    opacity: 0;
-}
-.container.close .account__icon{
-    /* opacity: 1; */
-    position: absolute;
-    font-size: 1.5rem;
-    bottom: -4rem;
-    right: 3.3rem;
-}
-.container.close hr{
-    display: none;
-}
-.container.close .account__img img{
-    margin-top: 4rem;
-}
-.container.close .navbar__icon__content{
-    width: 5rem;
-    height: 2rem;
-    transition: 0;
-}
-.container.close .navbar__icon__content:hover{
-    border-radius: .7rem 0 0 .7rem;
-}
-.container.close .navbar__icon__content::after{
-    display: none;
-}
-.container.close .navbar__container{
-    padding: 2rem;
-    padding-top: 3rem;
+
+@media screen and (max-width: 929px) {
+    .container{
+        position: relative;
+
+    }
+    .wrapper__navbar{
+    
+    }
+    .content{
+        
+    }
+    .siderbar{
+        
+    }
 }

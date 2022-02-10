@@ -191,12 +191,12 @@ const   navbar      = document.querySelector('.wrapper__navbar'),
 const resNavbar = document.querySelector('.navbar__effect__icon'),
     container = document.querySelector('.container')
 
-resNavbar.addEventListener('click', () =>{
-    container.classList.toggle("close");
-})
-resNavbar.addEventListener('click', () =>{
-    navbar.classList.toggle("close");
-})
+    resNavbar.addEventListener('click', () =>{
+        container.classList.toggle("close");
+    })
+    resNavbar.addEventListener('click', () =>{
+        container.classList.toggle("open");
+    })
         
 
 //heart
@@ -210,4 +210,4 @@ const   heartBtn = document.getElementById('heart')
                 heartBtn.style.color = '#676669';
             }
         })
-        
+
