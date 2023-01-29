@@ -9,112 +9,248 @@ icon__search.onclick = function(){
 //song
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
+const nameSong = $('.playSong__title')
+const audio = $('#audio')
+const source = $('#source')
+let isPlay = false;
+const nextBtn = $('.play-forward');
+const backBtn = $('.play-backward');
+const repeatBtn = $('.play-repeat');
+const playlist = $('.playList__play');
+const playBtn = $('#btn--play')
 
 const app = {
+    currentIndex : 0,
     songs : [
         {
             number: '01',
             name: 'Bach Tuong',
             singer: 'ToodLi',
-            path: './music/BachTuong-ToddLi.mp3'
+            path: './resource/music/BachTuong-ToddLi.mp3'
         },
         {
             number: '02',
             name: 'Ben Anh Dem Nay',
             singer: 'Binz',
-            path: './music/BenAnhDemNay-BinzJCHung.mp3'
+            path: './resource/music/BenAnhDemNay-BinzJCHung.mp3'
         },
         {
             number: '03',
             name: 'Ca nho',
             singer: 'ToodLi',
-            path: './music/CaNho-ToddLi.mp3'
+            path: './resource/music/CaNho-ToddLi.mp3'
         },
         {
             number: '04',
             name: 'Chang trai dang that tinh',
             singer: 'Binz',
-            path: './music/ChangTraiDangThatTinh-DatGBinz.mp3'
+            path: './resource/music/ChangTraiDangThatTinh-DatGBinz.mp3'
         },
         {
             number: '05',
             name: 'DeepSea',
             singer: 'Binz',
-            path: './music/DeepSea-BinzThanhNguyen.mp3'
+            path: './resource/music/DeepSea-BinzThanhNguyen.mp3'
         },
         {
             number: '06',
             name: 'Hai dam may',
             singer: 'Khoi',
-            path: './music/HaiDamMay-Khoi.mp3'
+            path: './resource/music/HaiDamMay-Khoi.mp3'
         },
         {
             number: '07',
             name: 'Nguoi trong long',
             singer: 'ToodLi',
-            path: './music/NguoiTrongLong-ToddLi.mp3'
+            path: './resource/music/NguoiTrongLong-ToddLi.mp3'
         },
         {
             number: '08',
             name: 'Sao cung duoc',
             singer: 'Binz',
-            path: './music/SaoCungDuoc.mp3'
+            path: './resource/music/SaoCungDuoc.mp3'
         },
         {
             number: '09',
             name: 'So Far',
             singer: 'Binz',
-            path: './music/SoFar-Binz.mp3'
+            path: './resource/music/SoFar-Binz.mp3'
         },
         {
             number: '10',
             name: 'Tieu Vu',
             singer: 'ToodLi',
-            path: './music/TieuVuCover-ToddLi.mp3'
+            path: './resource/music/TieuVuCover-ToddLi.mp3'
         }
     ],
-
+    defineProperties: function(){
+        Object.defineProperty(this, 'currentSong', {
+            get: function(){
+                return this.songs[this.currentIndex];
+            }
+        })
+    },
+    loadCurrentSong: function(){
+        nameSong.textContent = this.currentSong.name;
+        source.src = this.currentSong.path;
+    },
     render: function(){
-        const htmls = this.songs.map(song => {
+        const htmls = this.songs.map((song, index) => {
             return `
-            <div class="playList song">
+            <div class="playList song ${index === this.currentIndex ? "active" : ""}" data-index = ${index} >
                 <p class="playList__number">${song.number}</p>
                 <p class="playList__name">${song.name}</p>
                 <p class="playList__artist">${song.singer}</p>
-                <p class="playList__time"></p>
+                <p class="playList__more"><i class="fa-solid fa-ellipsis"></i></p>
             </div>
             `
         })
-        $(`.playList__play`).innerHTML = htmls.join('\n')
+        playlist.innerHTML = htmls.join('\n')
+    },
+    handleEvent: function(){
+        _this = this;
+        // playing
+
+        playBtn.addEventListener('click', function(){
+            if(isPlay == false){
+                audio.play();
+            }
+            else{
+                audio.pause();
+            }
+        })
+
+        // khi song dc play
+        audio.onplay = function(){
+            playBtn.classList.remove('fa-play-circle');
+            playBtn.classList.add('fa-pause-circle');
+            isPlay = true;
+        }
+
+        // khi song pause
+        audio.onpause = function(){
+            playBtn.classList.remove('fa-pause-circle');
+            playBtn.classList.add('fa-play-circle');
+            isPlay = false;
+        }
+
+        // click playlist chon bai
+        playlist.onclick = function (e){
+            const songNode = e.target.closest('.song:not(.active)');
+            if(songNode){
+                _this.currentIndex = Number(songNode.dataset.index);
+                _this.loadCurrentSong();
+                _this.render();
+                audio.play();
+            }
+        }
+        
+
+        // next bai hat
+        nextBtn.onclick = function(){
+            _this.nextSong();
+            audio.play();
+            _this.render();
+        }
+
+        // back bai hat
+        backBtn.onclick = function(){
+            _this.backSong();
+            audio.play();
+            _this.render();
+        }
+
+        // tu dong chuyen bai
+        audio.addEventListener('ended', function(){
+            _this.nextSong();
+            audio.play();
+            _this.render();
+        })
+
+        // quay lai tu dau
+        repeatBtn.addEventListener('click', function(){
+            audio.currentTime = 0;
+            audio.play();
+        })
+
     },
 
-    // getDuration(song) {
-    //     return new Promise(function (resolve) {
-    //     song.addEventListener("loadedmetadata", function () {
-    //         const time = formatTime(song.duration);
-    
-    //         resolve(time);
-    //         });
-    //     });
-    // },
-    
-    // formatTime: function formatTime(sec_num) {
-    //     let hours = Math.floor(sec_num / 3600);
-    //     let minutes = Math.floor((sec_num - hours * 3600) / 60);
-    //     let seconds = Math.floor(sec_num - hours * 3600 - minutes * 60);
-    
-    //     hours = hours < 10 ? (hours > 0 ? '0' + hours : 0) : hours;
-    
-    //     if (minutes < 10) {
-    //         minutes = '0' + minutes;
-    //     }
-    //     if (seconds < 10) {
-    //         seconds = '0' + seconds;
-    //     }
-    //     return (hours !== 0 ? hours + ':' : '') + minutes + ':' + seconds;
-    // },
+    backSong: function(){
+        this.currentIndex--;
+        if(this.currentIndex < 0){
+            this.currentIndex = this.songs.length - 1;
+        }
+        this.loadCurrentSong();
+    },
+
+    nextSong: function () {
+        this.currentIndex++;
+        if(this.currentIndex >= this.songs.length){
+            this.currentIndex = 0
+        }
+        this.loadCurrentSong();
+        audio.play();
+    },
+
+    displayTimer: function(){
+        setInterval(this.displayTimer, 500);
+        function formatTimer(number){
+            const minutes = Math.floor(number/60);
+            const seconds = Math.floor(number - minutes*60);
+            return `${minutes}:${seconds}`;
+        }
+
+        const remaningTime = $('.current-time');
+        const durationTime = $('.duration-time')
+        const {duration, currentTime} = audio;
+
+        // dieu khien thanh range
+        const rangeBar = $('.range')
+        rangeBar.max = duration;
+        rangeBar.value = currentTime;
+        rangeBar.addEventListener('change', function(){
+            audio.currentTime = rangeBar.value;
+        })
+
+        remaningTime.textContent = formatTimer(currentTime);
+        if(!duration){
+            durationTime.textContent = "00:00";
+        }
+        else{
+            durationTime.textContent = formatTimer(duration);
+        }
+    },
+
+    changeVolume: function(){
+        const volumnButton = $('.volumn__input');
+        const volumnProgress = $(".volumn__progress");
+        const volumnValue = $(".sliderValue");
+
+        volumnButton.oninput = function(){
+            volumnProgress.value = volumnButton.value;
+            volumnValue.innerHTML = volumnButton.value;
+            audio.volume = (volumnButton.value)/100;
+        }
+        
+    },
 
     start: function() {
+        // xu ly volume
+        this.changeVolume()
+
+        // dinh nghia thuoc tinh object
+        this.defineProperties()
+
+        // tai thong tin bai hat dau tien
+        this.loadCurrentSong()
+
+        // xu ly xu kien
+        this.handleEvent()
+
+        // hien thi thoi gian
+        this.displayTimer()
+
+        // render bai hat
         this.render()
     }
 }

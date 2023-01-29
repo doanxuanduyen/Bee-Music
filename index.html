@@ -238,7 +238,7 @@
                             <p class="playList__number">#</p>
                             <p class="playList__name">tittle</p>
                             <p class="playList__artist">artist</p>
-                            <p class="playList__time">time</p>
+                            <p class="playList__more">More</p>
                         </div>
                         <div class="playList__play">
                         </div>
@@ -246,6 +246,7 @@
                 </div>
 
                 <div class="playSong">
+                    <div class="playSong__title"></div>
                     <div class="playSong__control">
                         <div class="playSong__control__active">
                             <i class="far fa-heart" id="heart"></i>
@@ -255,7 +256,7 @@
                         <div class="playSong__control__main">
                             <i class="far fa-undo-alt play-repeat"></i>
                             <i class="fas fa-fast-backward play-backward"></i>
-                            <i class="fas fa-play-circle play"></i>
+                            <i class="fas fa-play-circle" id="btn--play"></i>
                             <i class="fas fa-fast-forward play-forward"></i>
                             <i class="fas fa-random play-random"></i>
                         </div>
@@ -269,13 +270,19 @@
                         </div>
                     </div>
                     <div class="playSong__process">
-                        <span class="current-time">00:00</span>
-                        <div class="progress__song"><div class="progress-bar__song"></div></div>
-                        <span class="duration-time">03:22</span>
+                        <span class="current-time"></span>
+                        <input type="range" name="range" id="range" class="range" />
+                        <!-- <div class="progress__song">
+                            <div class="progress-bar__song"></div>
+                        </div> -->
+                        <span class="duration-time"></span>
                     </div>
+                    <audio id="audio" >
+                        <source id="source" src="" type="audio/mpeg">
+                    </audio>
                 </div>
             </div>
-
+            
             <!-- siderbar -->
             <div class="siderbar">
                 <div class="siderbar__shortcut">
@@ -320,18 +327,6 @@
         </div>
     </div>
     
-    <script>
-        window.onload = function() {
-        volumnButton = document.querySelector(".volumn__input");
-        volumnButton.oninput = function(){
-            volumnProgress = document.querySelector(".volumn__progress");
-            volumnProgress.value = volumnButton.value;
-
-            volumnValue = document.querySelector(".sliderValue");
-            volumnValue.innerHTML = volumnButton.value;
-        }
-    }
-    </script>
     <script src="./resource/js/script.js"></script>
     <script src="./resource/js/chart.js"></script>
 </body>
